@@ -1,0 +1,13 @@
+server: {port: 9999,sessionTimeout: 2400 }
+spring:
+  application:
+    name: TEST
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/zhangjiang?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath*:com/zhangjiang/base/**/*.xml
+  type-aliases-package: com.zhangjiang.base.mapper

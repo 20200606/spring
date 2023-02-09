@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangjiang.base.mapper.HobbyInfoMapper">
+    <!--查询所有-->
+    <select id="selectAll" resultType="com.zhangjiang.base.entity.HobbyInfo">
+        select * from hobby_info
+    </select>
+
+    <!--连表查询-->
+    <select id="selectUnion" resultType="com.zhangjiang.base.entity.HobbyInfo">
+        select
+	    hi.*
+        from
+	    hobby_info hi
+        left join base_info bi on
+	        hi.id_card = bi.id_card ;
+    </select>
+</mapper>
