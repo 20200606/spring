@@ -1,11 +1,16 @@
 package com.zhangjiang.base;
 
-import com.zhangjiang.base.util.NumberUtils;
+import com.zhangjiang.base.Enum.ContractEnum;
+import com.zhangjiang.base.common.EnumEntity;
+import com.zhangjiang.base.util.enumutil.EnumUtils;
+import com.zhangjiang.base.util.numberutil.NumberUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @className BaseTest
@@ -35,5 +40,14 @@ public class BaseTest {
         String str = "34566777777600";
         String format = new DecimalFormat("#,###.00").format(new BigDecimal(str));
         System.out.println("format = " + format);
+    }
+
+    @Test
+    public void test02(){
+        Class<ContractEnum> contractEnumClass = ContractEnum.class;
+        List<EnumEntity> getName = EnumUtils.getEnumToList(contractEnumClass, "getName");
+        System.out.println("getName = " + getName.get(0));
+        Map<String, String> map = EnumUtils.enumToMap(contractEnumClass, "getType");
+        System.out.println("map = " + map);
     }
 }

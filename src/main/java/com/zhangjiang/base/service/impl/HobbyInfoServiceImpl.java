@@ -1,5 +1,7 @@
 package com.zhangjiang.base.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhangjiang.base.entity.HobbyInfo;
 import com.zhangjiang.base.mapper.HobbyInfoMapper;
@@ -54,5 +56,15 @@ public class HobbyInfoServiceImpl extends ServiceImpl<HobbyInfoMapper,HobbyInfo>
     @Override
     public List<HobbyInfo> queryAllHobby() {
         return baseMapper.selectAll();
+    }
+
+    @Override
+    public String transferJson() {
+        QueryWrapper<HobbyInfo> wrapper = new QueryWrapper<>();
+        wrapper.like("hobby", "篮球");
+        wrapper.last("limit 20");
+        List<HobbyInfo> hobbyInfoList = baseMapper.selectList(wrapper);
+        String s = JSON.toJSONString(hobbyInfoList);
+        return s;
     }
 }

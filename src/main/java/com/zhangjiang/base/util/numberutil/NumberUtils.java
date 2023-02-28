@@ -1,4 +1,4 @@
-package com.zhangjiang.base.util;
+package com.zhangjiang.base.util.numberutil;
 
 import org.springframework.stereotype.Component;
 

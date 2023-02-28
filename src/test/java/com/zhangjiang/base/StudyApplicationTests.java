@@ -2,8 +2,8 @@ package com.zhangjiang.base;
 
 import com.zhangjiang.base.Enum.ContractEnum;
 import com.zhangjiang.base.common.EnumEntity;
-import com.zhangjiang.base.util.EnumUtils;
-import com.zhangjiang.base.util.NumberUtils;
+import com.zhangjiang.base.util.enumutil.EnumUtils;
+import com.zhangjiang.base.util.numberutil.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

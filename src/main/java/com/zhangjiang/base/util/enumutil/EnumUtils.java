@@ -1,4 +1,4 @@
-package com.zhangjiang.base.util;
+package com.zhangjiang.base.util.enumutil;
 
 import com.zhangjiang.base.common.EnumEntity;
 import org.slf4j.Logger;

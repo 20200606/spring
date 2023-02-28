@@ -3,11 +3,35 @@ spring:
   application:
     name: TEST
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/zhangjiang?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/zhangjiang?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    #password: 123456
+    lettuce:
+      pool:
+        max-active: 8 #最大连接
+        max-idle: 8 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+        max-wait: 300ms #连接等待时间
+  rabbitmq:
+    username: admin
+    password: admin
+    host: 192.168.6.228
+    port: 5672
+    virtual-host: /shopping
+    listener:
+      simple:
+        concurrency: 1 #消费端最小并发数
+        max-concurrency: 1 #消费端最大并发数
+        prefetch: 1 #一次处理的消息数量
+rabbitmq:
+  start: false
 mybatis-plus:
   mapper-locations: classpath*:com/zhangjiang/base/**/*.xml
   type-aliases-package: com.zhangjiang.base.mapper

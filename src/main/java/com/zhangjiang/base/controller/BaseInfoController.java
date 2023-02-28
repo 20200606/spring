@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @className BaseInfoController
  * @Author zhangjiang
- * @Description:
+ * @Description: 基本信息测试
  * @Date 2022/10/13 13:37:49
  */
 @RestController
@@ -57,8 +57,17 @@ public class BaseInfoController {
         }
     }
 
+    @GetMapping("testJUCUtils")
+    public List<BaseInfo> testJUCUtils() throws InterruptedException{
+        long start = System.currentTimeMillis();
+        List<BaseInfo> baseInfoList = baseInfoService.selectById();
+        long end = System.currentTimeMillis();
+        System.out.println("查询时间" + (end - start) + "ms，查询数据" + baseInfoList.size() + "条");
+        return baseInfoList;
+    }
+
     @PostMapping("/insertHobbyRecords")
-    public Result insertHobbyRecords(){
+    public Result insertHobbyRecords() {
         int rows = hobbyInfoService.insertHobbyRecords();
         if (rows > 0) {
             return Result.ok(ResultCodeEnum.SUCCESS);
@@ -85,5 +94,26 @@ public class BaseInfoController {
         System.out.println("查询时间：" + (end-start) + "ms");
         map.put("data", hobbyInfoList);
         return map;
+    }
+
+    @PostMapping("/redisLock")
+    public String testRedisLock(){
+        return baseInfoService.testRedisLock();
+    }
+
+    @GetMapping("/getFromRedis")
+    public Map getFromRedis(){
+        return baseInfoService.getFromRedis();
+    }
+
+    @PostMapping("/transferJson")
+    public String transferJson(){
+        return hobbyInfoService.transferJson();
+    }
+
+    @PostMapping("/testMapApi")
+    public Map<String, Integer> testMapApi(){
+
+        return baseInfoService.testMapApi();
     }
 }

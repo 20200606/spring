@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
  */
 @TableName("base_info")
 @Data
-public class BaseInfo {
+public class BaseInfo implements Serializable {
     @TableField("id")
     private Long id;
 
@@ -44,4 +45,12 @@ public class BaseInfo {
 
     @TableField("UPDATE_TIME")
     private Date updateTime;
+
+    public BaseInfo(String name, String age){
+        this.name = name;
+        this.age = age;
+    }
+    public BaseInfo(){
+
+    }
 }

@@ -30,4 +30,9 @@ public interface HobbyInfoService {
      */
     List<HobbyInfo> queryAllHobby();
 
+    /**
+     * 转换Json
+     * @return
+     */
+    String transferJson();
 }
